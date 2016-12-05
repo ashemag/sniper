@@ -516,5 +516,9 @@ if __name__ == "__main__":
                      n_snipers=n_snipers,
                      n_targets=n_targets,
                      reward_mech='local')
-    import IPython
-    IPython.embed()
+    env.reset()
+    for _ in xrange(20):
+        env.render()
+        a = [np.random.randint(0,4) for _ in xrange(n_surv)]
+        o, r, done, _ = env.step(a)
+        print("Reward:", r)
